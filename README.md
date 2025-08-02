@@ -11,7 +11,7 @@ This website is designed to showcase Nelson's **technical skills, education, pro
 
 ## 🔗 Live Demo
 
-➡️ [Visit My Portfolio Website](https://nelsonmaranda.com)
+➡️ [Visit My Portfolio Website](nelson-maranda.netlify.app)
 
 ---
 
