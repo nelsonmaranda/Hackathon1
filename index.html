@@ -337,7 +337,8 @@
           <!-- Contact form for sending messages -->
           <div class="contact-form">
             <h3>Send me a professional message</h3>
-            <form action="mailto:nelsonmaranda2@gmail.com" method="post" enctype="text/plain">
+            <form name="contact" method="POST" data-netlify="true">
+              <input type="hidden" name="form-name" value="contact" />
               <!-- Name input field -->
               <div class="form-group">
                 <label for="name">Full Name</label>
