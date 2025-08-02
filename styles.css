@@ -1,0 +1,734 @@
+/* ==========================================================================
+   PORTFOLIO WEBSITE CSS
+   ========================================================================== */
+
+/* ==========================================================================
+   RESET & GLOBAL VARIABLES
+   ========================================================================== */
+
+/* Universal reset to remove default margins, padding, and set box-sizing */
+* { 
+  margin: 0; 
+  padding: 0; 
+  box-sizing: border-box; 
+}
+
+/* CSS Custom Properties (Variables) for consistent theming */
+:root {
+  /* Primary brand colors */
+  --primary-color: #2563eb;      /* Main blue color */
+  --secondary-color: #1e40af;    /* Darker blue for hover states */
+  --accent-color: #f59e0b;       /* Orange accent for highlights */
+  
+  /* Text colors */
+  --text-primary: #1f2937;       /* Dark gray for main text */
+  --text-secondary: #6b7280;     /* Light gray for secondary text */
+  
+  /* Background colors */
+  --bg-secondary: #f8fafc;       /* Light gray background */
+  --bg-dark: #0f172a;           /* Dark background for contact section */
+  
+  /* Gradient for hero section */
+  --gradient: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+}
+
+/* Global body styles */
+body {
+  font-family: 'Inter', sans-serif;
+  line-height: 1.6;
+  color: var(--text-primary);
+  overflow-x: hidden;           /* Prevent horizontal scrolling */
+}
+
+/* ==========================================================================
+   NAVIGATION BAR
+   ========================================================================== */
+
+/* Fixed navigation bar with glassmorphism effect */
+.navbar {
+  position: fixed; 
+  top: 0; 
+  width: 100%;
+  background: rgba(255,255,255,0.95);  /* Semi-transparent white */
+  backdrop-filter: blur(10px);         /* Glassmorphism blur effect */
+  z-index: 1000;                      /* Keep navbar above other content */
+  padding: 1rem 0;
+}
+
+/* Container for navbar content with max-width and centering */
+.nav-container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem;
+  display: flex; 
+  justify-content: space-between; 
+  align-items: center; 
+}
+
+/* Logo styling */
+.logo { 
+  font-size: 1.5rem; 
+  font-weight: 700; 
+  color: var(--primary-color); 
+  text-decoration: none; 
+}
+
+/* Navigation links container */
+.nav-links { 
+  display: flex; 
+  list-style: none; 
+  gap: 2rem; 
+}
+
+/* Individual navigation link styling */
+.nav-links a { 
+  text-decoration: none; 
+  color: var(--text-primary); 
+  font-weight: 500; 
+  position: relative;           /* For ::after pseudo-element positioning */
+}
+
+/* Hover effect for navigation links */
+.nav-links a:hover { 
+  color: var(--primary-color); 
+}
+
+/* Animated underline effect on hover */
+.nav-links a::after { 
+  content: ''; 
+  position: absolute; 
+  bottom: -5px; 
+  left: 0; 
+  width: 0; 
+  height: 2px; 
+  background: var(--primary-color); 
+  transition: width 0.3s;       /* Smooth width animation */
+}
+
+.nav-links a:hover::after { 
+  width: 100%; 
+}
+
+/* ==========================================================================
+   LAYOUT & CONTAINERS
+   ========================================================================== */
+
+/* Standard section padding */
+.section { 
+  padding: 5rem 0; 
+}
+
+/* Main content container with max-width and centering */
+.container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem; 
+}
+
+/* Section header with centered text */
+.section-header { 
+  text-align: center; 
+  margin-bottom: 4rem; 
+}
+
+/* Section title with decorative underline */
+.section-title { 
+  font-size: 2.5rem; 
+  font-weight: 700; 
+  position: relative; 
+  margin-bottom: 1rem; 
+}
+
+/* Decorative underline for section titles */
+.section-title::after { 
+  content: ''; 
+  position: absolute; 
+  bottom: -10px; 
+  left: 50%; 
+  transform: translateX(-50%); 
+  width: 60px; 
+  height: 3px; 
+  background: var(--accent-color); 
+  border-radius: 2px; 
+}
+
+/* Section subtitle styling */
+.section-subtitle { 
+  font-size: 1.1rem; 
+  color: var(--text-secondary); 
+  max-width: 600px; 
+  margin: 0 auto; 
+}
+
+/* ==========================================================================
+   HERO SECTION
+   ========================================================================== */
+
+/* Full-height hero section with gradient background */
+.hero { 
+  min-height: 100vh; 
+  background: var(--gradient); 
+  display: flex; 
+  align-items: center; 
+  overflow: hidden; 
+}
+
+/* Hero content layout - two column grid */
+.hero-container { 
+  max-width: 1200px; 
+  margin: 0 auto; 
+  padding: 0 2rem;
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 4rem; 
+  align-items: center; 
+}
+
+/* Main hero heading */
+.hero-content h1 { 
+  font-size: 3.5rem; 
+  font-weight: 800; 
+  color: white; 
+  line-height: 1.2; 
+  margin-bottom: 1rem; 
+}
+
+/* Hero subtitle */
+.subtitle { 
+  font-size: 1.25rem; 
+  color: rgba(255,255,255,0.9); 
+  margin-bottom: 2rem; 
+}
+
+/* Hero description text */
+.description { 
+  font-size: 1.1rem; 
+  color: rgba(255,255,255,0.8); 
+  line-height: 1.7; 
+  margin-bottom: 2rem; 
+}
+
+/* Call-to-action buttons container */
+.cta-buttons { 
+  display: flex; 
+  gap: 1rem; 
+  margin-bottom: 2rem; 
+}
+
+/* Base button styling */
+.btn { 
+  padding: 0.75rem 2rem; 
+  border-radius: 50px; 
+  font-weight: 600; 
+  text-decoration: none; 
+  display: inline-flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+}
+
+/* Primary button (filled) */
+.btn-primary { 
+  background: white; 
+  color: var(--primary-color); 
+}
+
+/* Outline button (transparent with border) */
+.btn-outline { 
+  background: transparent; 
+  color: white; 
+  border: 2px solid white; 
+}
+
+/* Outline button hover effect */
+.btn-outline:hover { 
+  background: white; 
+  color: var(--primary-color); 
+}
+
+/* Glassmorphism profile card */
+.profile-card { 
+  background: rgba(255,255,255,0.1); 
+  backdrop-filter: blur(20px); 
+  border-radius: 20px; 
+  padding: 2rem; 
+  border: 1px solid rgba(255,255,255,0.2); 
+  text-align: center;
+}
+
+/* Profile image with gradient background (fallback for initials) */
+.profile-image { 
+  width: 150px; 
+  height: 150px; 
+  border-radius: 50%; 
+  background: linear-gradient(45deg,#ff6b6b,#4ecdc4); 
+  margin: 0 auto 1rem; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 3rem; 
+  color: white; 
+  font-weight: bold; 
+}
+
+/* ==========================================================================
+   ABOUT SECTION
+   ========================================================================== */
+
+/* About section with light background */
+.about { 
+  background: var(--bg-secondary); 
+}
+
+/* About content layout - two column grid */
+.about-content { 
+  display: grid; 
+  grid-template-columns: 1fr 2fr; 
+  gap: 4rem; 
+  align-items: center; 
+}
+
+/* Light card styling */
+.card-light { 
+  background: white; 
+  color: var(--text-primary); 
+}
+
+/* Highlighted text in primary color */
+.highlight { 
+  color: var(--primary-color); 
+  font-weight: 600; 
+}
+
+/* ==========================================================================
+   SKILLS SECTION
+   ========================================================================== */
+
+/* Skills grid layout - responsive columns */
+.skills-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+  gap: 2rem; 
+}
+
+/* Individual skill category card */
+.skill-category { 
+  background: white; 
+  padding: 2rem; 
+  border-radius: 15px; 
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08); 
+}
+
+/* Skill category heading */
+.skill-category h3 { 
+  color: var(--primary-color); 
+  margin-bottom: 1rem; 
+  font-size: 1.3rem; 
+}
+
+/* Container for skill tags */
+.skill-tags { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 0.5rem; 
+}
+
+/* Individual skill tag styling */
+.skill-tag { 
+  background: var(--bg-secondary); 
+  color: var(--text-primary); 
+  padding: 0.5rem 1rem; 
+  border-radius: 25px; 
+  font-size: 0.9rem; 
+  font-weight: 500; 
+}
+
+/* ==========================================================================
+   EDUCATION SECTION
+   ========================================================================== */
+
+/* Education section with light background */
+.education { 
+  background: var(--bg-secondary); 
+}
+
+/* Individual education item with left border accent */
+.education-item { 
+  background: white; 
+  padding: 2rem; 
+  border-radius: 15px; 
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08); 
+  margin-bottom: 2rem; 
+  position: relative; 
+}
+
+/* Left border accent line */
+.education-item::before { 
+  content: ''; 
+  position: absolute; 
+  top: 0; 
+  left: 0; 
+  width: 4px; 
+  height: 100%; 
+  background: var(--primary-color); 
+}
+
+/* Education content with left margin */
+.education-content { 
+  margin-left: 1rem; 
+}
+
+/* Degree/qualification title */
+.degree { 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  color: var(--primary-color); 
+  margin-bottom: 0.5rem; 
+}
+
+/* Institution name */
+.institution { 
+  font-size: 1.1rem; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
+}
+
+/* Education time period */
+.education-period { 
+  color: var(--text-secondary); 
+  font-style: italic; 
+  margin-bottom: 1rem; 
+}
+
+/* CV download section */
+.cv-download { 
+  text-align: center; 
+  margin-top: 2rem; 
+}
+
+/* ==========================================================================
+   PROJECTS SECTION
+   ========================================================================== */
+
+/* Projects grid layout - responsive columns */
+.projects-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr)); 
+  gap: 2rem;
+}
+
+/* Individual project card with hover animation */
+.project-card { 
+  background: white; 
+  border-radius: 15px; 
+  overflow: hidden; 
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08); 
+  transition: transform 0.3s ease; 
+}
+
+/* Project card hover effect */
+.project-card:hover { 
+  transform: translateY(-10px); 
+}
+
+/* Project image placeholder with gradient */
+.project-image { 
+  height: 200px; 
+  background: var(--gradient); 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+  font-size: 2rem; 
+}
+
+/* Project card content area */
+.project-content { 
+  padding: 2rem; 
+}
+
+/* Project title */
+.project-title { 
+  font-size: 1.3rem; 
+  font-weight: 700; 
+  margin-bottom: 1rem; 
+  color: var(--primary-color); 
+}
+
+/* Project description */
+.project-description { 
+  color: var(--text-secondary); 
+  margin-bottom: 1.5rem; 
+  line-height: 1.6; 
+}
+
+/* Container for technology tags */
+.project-tech { 
+  display: flex; 
+  flex-wrap: wrap; 
+  gap: 0.5rem; 
+  margin-bottom: 1.5rem; 
+}
+
+/* Individual technology tag */
+.tech-tag { 
+  background: var(--bg-secondary); 
+  color: var(--primary-color); 
+  padding: 0.3rem 0.8rem; 
+  border-radius: 15px; 
+  font-size: 0.8rem; 
+  font-weight: 500; 
+}
+
+/* Project link styling */
+.project-link { 
+  color: var(--primary-color); 
+  text-decoration: none; 
+  font-weight: 600; 
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem; 
+  transition: color 0.3s; 
+}
+
+/* Project link hover effect */
+.project-link:hover { 
+  color: var(--secondary-color); 
+}
+
+/* ==========================================================================
+   INTERESTS SECTION
+   ========================================================================== */
+
+/* Interests section with light background */
+.interests { 
+  background: var(--bg-secondary); 
+}
+
+/* Interests grid layout - responsive columns */
+.interests-grid { 
+  display: grid; 
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+  gap: 2rem; 
+}
+
+/* Individual interest item */
+.interest-item { 
+  background: white; 
+  padding: 2rem; 
+  border-radius: 15px; 
+  text-align: center; 
+  box-shadow: 0 5px 25px rgba(0,0,0,0.08); 
+}
+
+/* Interest icon */
+.interest-icon { 
+  font-size: 3rem; 
+  margin-bottom: 1rem; 
+}
+
+/* Interest title */
+.interest-title { 
+  font-size: 1.2rem; 
+  font-weight: 600; 
+  margin-bottom: 0.5rem; 
+  color: var(--primary-color); 
+}
+
+/* ==========================================================================
+   CONTACT SECTION
+   ========================================================================== */
+
+/* Contact section with dark background */
+.contact { 
+  background: var(--bg-dark); 
+  color: white; 
+}
+
+/* Override section title and subtitle colors for dark background */
+.contact .section-title, 
+.contact .section-subtitle { 
+  color: white; 
+}
+
+/* Contact content layout - two column grid */
+.contact-content { 
+  display: grid; 
+  grid-template-columns: 1fr 1fr; 
+  gap: 4rem; 
+}
+
+/* Contact form with glassmorphism effect */
+.contact-form { 
+  background: rgba(255,255,255,0.05); 
+  padding: 2rem; 
+  border-radius: 15px; 
+  backdrop-filter: blur(10px); 
+}
+
+/* Form group spacing */
+.form-group { 
+  margin-bottom: 1.5rem; 
+}
+
+/* Form labels */
+.form-group label { 
+  display: block; 
+  margin-bottom: 0.5rem; 
+  font-weight: 500; 
+}
+
+/* Form inputs and textarea */
+.form-group input, 
+.form-group textarea { 
+  width: 100%; 
+  padding: 0.75rem; 
+  border: 1px solid rgba(255,255,255,0.2); 
+  border-radius: 8px; 
+  background: rgba(255,255,255,0.1); 
+  color: white; 
+  font-family: inherit; 
+}
+
+/* Placeholder text styling */
+.form-group ::placeholder { 
+  color: rgba(255,255,255,0.6); 
+}
+
+/* Contact information container */
+.contact-info { 
+  display: flex; 
+  flex-direction: column; 
+  gap: 2rem; 
+}
+
+/* Contact icon styling */
+.contact-icon { 
+  width: 50px; 
+  height: 50px; 
+  background: var(--primary-color); 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  font-size: 1.2rem; 
+}
+
+/* Contact item layout */
+.contact-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  text-decoration: none;
+  color: inherit;
+  transition: all 0.3s ease;
+}
+
+/* Make h4 titles in contact items non-clickable and maintain white color */
+.contact-item h4 {
+  pointer-events: none;
+  color: white !important;
+  text-decoration: none !important;
+  cursor: default;
+}
+
+/* Override link styling for h4 inside contact links */
+a.contact-item h4 {
+  color: white !important;
+  text-decoration: none !important;
+}
+
+/* ==========================================================================
+   FOOTER
+   ========================================================================== */
+
+/* Footer with black background */
+.footer { 
+  background: #000; 
+  color: white; 
+  text-align: center; 
+  padding: 2rem 0; 
+}
+
+/* Social links container */
+.social-links { 
+  display: flex; 
+  justify-content: center; 
+  gap: 1rem; 
+  margin-bottom: 1rem; 
+}
+
+/* Individual social link styling */
+.social-link { 
+  width: 40px; 
+  height: 40px; 
+  background: var(--primary-color); 
+  border-radius: 50%; 
+  display: flex; 
+  align-items: center; 
+  justify-content: center; 
+  color: white; 
+  text-decoration: none; 
+  transition: transform 0.3s; 
+}
+
+/* Social link hover effect */
+.social-link:hover { 
+  transform: scale(1.1); 
+}
+
+/* ==========================================================================
+   UTILITY CLASSES
+   ========================================================================== */
+
+/* Profile image for actual photos */
+.profile-image-photo {
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 4px solid var(--primary-color);
+  display: block;
+  margin: 0 auto 1rem;
+}
+
+/* Logo image styling */
+.logo img {
+  width: 40px; 
+  height: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+/* ==========================================================================
+   RESPONSIVE DESIGN
+   ========================================================================== */
+
+/* Mobile and tablet responsive styles */
+@media (max-width: 768px) {
+  /* Hide navigation links on mobile (hamburger menu would be needed) */
+  .nav-links { 
+    display: none; 
+  }
+  
+  /* Stack hero content vertically on mobile */
+  .hero-container { 
+    grid-template-columns: 1fr; 
+    text-align: center; 
+  }
+  
+  /* Reduce hero heading size on mobile */
+  .hero-content h1 { 
+    font-size: 2.5rem; 
+  }
+  
+  /* Stack CTA buttons vertically on mobile */
+  .cta-buttons { 
+    flex-direction: column; 
+  }
+  
+  /* Stack about and contact content vertically on mobile */
+  .about-content, 
+  .contact-content { 
+    grid-template-columns: 1fr; 
+  }
+}
